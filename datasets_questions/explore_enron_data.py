@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""" 
+"""
     Starter code for exploring the Enron dataset (emails + finances);
     loads up the dataset (pickled dict of dicts).
 
@@ -12,11 +12,23 @@
     but here's an example to get you started:
 
     enron_data["SKILLING JEFFREY K"]["bonus"] = 5600000
-    
+
 """
 
 import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
+c=0
+d=0
+for i in enron_data:
+    if  enron_data[i]["total_payments"] != "NaN":
+        if enron_data[i]["poi"]== True:
+            c+=1
+    if enron_data[i]["poi"]== True:
+        d+=1
 
+    #print "\n"
+#enron_data["LASTNAME FIRSTNAME"]["FEATURE"]
 
+print c
+print d
