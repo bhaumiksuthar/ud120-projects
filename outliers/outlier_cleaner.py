@@ -19,7 +19,6 @@ def outlierCleaner(predictions, ages, net_worths):
 
     errors=abs(predictions-net_worths)
     ncd=zip(ages,net_worths,errors)
-
     cleaned_data = sorted(ncd, key = itemgetter(2))
 
     return cleaned_data[:81]
