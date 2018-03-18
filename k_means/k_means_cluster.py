@@ -119,8 +119,6 @@ plt.show()
 from sklearn.cluster import KMeans
 pred = KMeans(n_clusters=2, n_init=10, max_iter=300).fit_predict(finance_features)
 
-
-
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
 try:
