@@ -98,3 +98,4 @@ print len(vectorizer.get_feature_names())
 idf_data = zip(vectorizer.get_feature_names(), vectorizer.idf_)
 
 print idf_data[34597]
+print idf_data[33614]

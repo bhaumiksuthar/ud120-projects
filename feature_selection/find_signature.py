@@ -8,7 +8,9 @@ numpy.random.seed(42)
 ### The words (features) and authors (labels), already largely processed.
 ### These files should have been created from the previous (Lesson 10)
 ### mini-project.
-words_file = "../text_learning/your_word_data.pkl" 
+#words_file = "../feature_selection/word_data_overfit.pkl"
+#authors_file = "../feature_selection/email_authors_overfit.pkl"
+words_file = "../text_learning/your_word_data.pkl"
 authors_file = "../text_learning/your_email_authors.pkl"
 word_data = pickle.load( open(words_file, "r"))
 authors = pickle.load( open(authors_file, "r") )
@@ -35,9 +37,31 @@ features_test  = vectorizer.transform(features_test).toarray()
 features_train = features_train[:150].toarray()
 labels_train   = labels_train[:150]
 
-
+import numpy
 
 ### your code goes here
+from sklearn import tree
+clf=tree.DecisionTreeClassifier()
 
+clf.fit(features_train,labels_train)
 
+#pred=clf.predict(features_test)
+#print pred
 
+print clf.feature_importances_
+
+acc=clf.score(features_test,labels_test)
+print acc
+
+print len(features_train)
+max_ele=0
+counter_i=0
+max_index=0
+for i in clf.feature_importances_:
+    if i > max_ele:
+        max_ele=i
+        max_index=counter_i
+    counter_i +=1
+
+print max_ele
+print max_index
